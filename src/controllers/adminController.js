@@ -27,6 +27,8 @@ export const createAdmin = async (req, res) => {
       password,
       role: "admin",
       isVerified: true, // Admins should be verified by default
+      jila: "AdminJila",
+      prakhand: "AdminPrakhand",
     });
 
     res
@@ -165,7 +167,7 @@ export const getAllServicePrices = async (req, res) => {
             label: SERVICE_LABELS[type],
           });
         }
-      })
+      }),
     );
 
     // 3. Now fetch the complete list from DB
@@ -194,7 +196,7 @@ export const updateServicePrice = async (req, res) => {
     const config = await ServiceConfig.findOneAndUpdate(
       { serviceType },
       { price: newPrice },
-      { new: true, upsert: true } // Create if doesn't exist
+      { new: true, upsert: true }, // Create if doesn't exist
     );
 
     res.status(200).json({ message: "Price updated successfully", config });
@@ -224,7 +226,7 @@ export const toggleServiceStatus = async (req, res) => {
     const config = await ServiceConfig.findOneAndUpdate(
       { serviceType },
       { isActive },
-      { new: true, upsert: true } // Create if missing
+      { new: true, upsert: true }, // Create if missing
     );
 
     res.status(200).json({
