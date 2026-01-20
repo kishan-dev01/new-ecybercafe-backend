@@ -17,10 +17,9 @@ import adminStatsRoutes from "./routes/adminStatsRoutes.js";
 const app = express();
 
 const corsOptions = {
-  // origin: ["https://ecybercafe.in", "https://www.ecybercafe.in"],
   origin: [
-    "https://ecybercafe.in",
-    "https://www.ecybercafe.in",
+    "https://jtzone.in",
+    "https://www.jtzone.in",
     "http://localhost:5173",
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
@@ -51,7 +50,7 @@ app.use(
   fileUpload({
     limits: { fileSize: 20 * 1024 * 1024 },
     useTempFiles: false,
-  })
+  }),
 );
 
 const __dirname = path.resolve();
@@ -61,7 +60,7 @@ app.use(
     setHeaders: (res, path) => {
       res.setHeader("cross-origin-resource-policy", "cross-origin");
     },
-  })
+  }),
 );
 
 // Routes
